@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introdução à administração de startups</title>
+<meta name="description" content="Palestra sobre administração de startups no SENAC Ribeirão Preto.">
+<style>
+:root{
+  --ink:#101828; --muted:#667085; --line:#e4e7ec; --paper:#f8fafc;
+  --accent:#0b6bcb; --accent2:#13a8a8; --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(228,231,236,.8)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:-.03em}.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:26px;font-size:14px;color:#475467}
+.nav-links a:hover{color:var(--accent)}
+.hero{padding:145px 0 90px;background:radial-gradient(circle at 80% 15%,#dff4ff 0,transparent 34%),linear-gradient(135deg,#fff 0,#f4f8fc 100%)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--accent);font-weight:750;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+.eyebrow:before{content:"";width:28px;height:2px;background:var(--accent)}
+h1{font-size:clamp(42px,6vw,70px);line-height:1.02;letter-spacing:-.055em;max-width:780px}
+.lead{font-size:19px;color:#475467;max-width:690px;margin:25px 0 30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:10px;font-weight:750;border:1px solid var(--accent);transition:.2s}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(11,107,203,.18)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-light{margin-left:8px;background:#fff;color:var(--ink);border-color:var(--line)}
+.event-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 25px 60px rgba(16,24,40,.08)}
+.event-card .date{font-size:48px;font-weight:850;line-height:1;color:var(--accent)}
+.event-card .month{font-weight:800;margin-top:4px}
+.details{margin-top:25px;border-top:1px solid var(--line);padding-top:18px}
+.detail{display:flex;gap:13px;margin:14px 0;color:#475467}
+.icon{width:34px;height:34px;border-radius:9px;background:#edf6ff;display:grid;place-items:center;color:var(--accent);font-weight:800;flex:none}
+section{padding:88px 0}
+.section-kicker{color:var(--accent);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.12em}
+h2{font-size:38px;line-height:1.12;letter-spacing:-.035em;margin:8px 0 15px}
+.section-intro{color:var(--muted);max-width:700px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:27px}
+.card h3{margin:12px 0 8px;font-size:19px}
+.card p{color:var(--muted);font-size:15px}
+.number{font-size:13px;font-weight:850;color:var(--accent)}
+.speaker{background:#101828;color:#fff}
+.speaker-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:70px;align-items:center}
+.portrait{height:360px;border-radius:28px;background:#1e293b;display:grid;place-items:center;overflow:hidden}.portrait img{width:100%;height:100%;object-fit:cover;object-position:center}
+.speaker p{color:#cbd5e1;max-width:650px}
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:35px}
+.agenda-item{display:flex;gap:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.time{font-weight:850;color:var(--accent);min-width:80px}
+.info h3{font-size:17px}.info p{color:var(--muted);font-size:14px}
+.cta{background:linear-gradient(135deg,#0b6bcb,#084d94);color:#fff;text-align:center}
+.cta p{color:#dbeafe;max-width:650px;margin:0 auto 25px}
+.cta .btn{background:#fff;color:#0b6bcb;border-color:#fff}
+footer{padding:35px 0;color:#667085;font-size:13px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:22px}
+@media(max-width:800px){
+ .hero-grid,.speaker-grid{grid-template-columns:1fr;gap:35px}
+ .cards,.agenda{grid-template-columns:1fr}
+ .nav-links{display:none}
+ .hero{padding-top:115px}
+ h1{font-size:45px}
+ .portrait{height:240px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#inicio">SENAC<span>.</span></a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a><a href="#conteudo">Conteúdo</a><a href="#palestrante">Palestrante</a><a href="#programacao">Programação</a><a href="#inscricao">Inscrição</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+ <div class="container hero-grid">
+  <div>
+   <div class="eyebrow">Palestra presencial · Ribeirão Preto</div>
+   <h1>Introdução à administração de startups: técnicas para gerenciar recursos</h1>
+   <p class="lead">Uma introdução prática aos principais elementos que todo empreendedor precisa compreender para começar a administrar seu negócio com mais direção, organização e estratégia.</p>
+   <a class="btn btn-primary" href="#inscricao">Garantir minha inscrição</a>
+   <a class="btn btn-light" href="#sobre">Conhecer o evento</a>
+  </div>
+  <aside class="event-card">
+   <div class="date">10</div><div class="month">AGOSTO · 2026</div>
+   <div class="details">
+    <div class="detail"><div class="icon">10h</div><div><b>Horário</b><br>10h às 14h</div></div>
+    <div class="detail"><div class="icon">⌖</div><div><b>Local</b><br>SENAC · Capitão Salomão<br>Ribeirão Preto — SP</div></div>
+    <div class="detail"><div class="icon">R$</div><div><b>Entrada gratuita</b><br>Financiamento SENAC</div></div>
+   </div>
+  </aside>
+ </div>
+</header>
+
+<section id="sobre">
+ <div class="container">
+  <div class="section-kicker">Por que participar</div>
+  <h2>Comece a empreender com uma direção clara.</h2>
+  <p class="section-intro">O encontro foi pensado para quem está iniciando um negócio e quer entender, de maneira introdutória e objetiva, como organizar os recursos essenciais de uma empresa.</p>
+  <div class="cards">
+   <article class="card"><div class="number">01 — VISÃO</div><h3>Entenda o negócio</h3><p>Conheça os principais pontos que precisam ser considerados antes e durante a construção de uma startup.</p></article>
+   <article class="card"><div class="number">02 — GESTÃO</div><h3>Organize recursos</h3><p>Tenha uma visão inicial sobre finanças, marketing, pessoas e outros recursos fundamentais para a administração.</p></article>
+   <article class="card"><div class="number">03 — CONEXÃO</div><h3>Construa sua rede</h3><p>Após a palestra, participe do coffee break e aproveite o momento para tirar dúvidas e fazer networking.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="speaker" id="palestrante">
+ <div class="container speaker-grid">
+  <div class="portrait"><img src="aparecido-savegnago.jpeg" alt="Foto de Aparecido Savegnago"></div>
+  <div>
+   <div class="section-kicker" style="color:#7dd3fc">Palestrante</div>
+   <h2>Aparecido Savegnago</h2>
+   <p>Conduzirá uma conversa introdutória sobre administração de startups e as principais técnicas para gerenciar recursos de forma organizada e estratégica.</p>
+   <p style="margin-top:15px">O objetivo é apresentar conceitos essenciais de forma acessível para empreendedores de diferentes nichos e idades.</p>
+  </div>
+ </div>
+</section>
+
+<section id="conteudo">
+ <div class="container">
+  <div class="section-kicker">O que você vai encontrar</div>
+  <h2>Os fundamentos por trás de uma boa gestão.</h2>
+  <p class="section-intro">A palestra aborda uma visão geral dos recursos que precisam ser administrados para que uma empresa consiga evoluir de forma consistente.</p>
+  <div class="cards">
+   <article class="card"><div class="number">FINANÇAS</div><h3>Recursos financeiros</h3><p>Uma visão introdutória sobre organização financeira e uso responsável dos recursos da empresa.</p></article>
+   <article class="card"><div class="number">MARKETING</div><h3>Mercado e clientes</h3><p>Como pensar posicionamento, divulgação e relacionamento com o público desde o início.</p></article>
+   <article class="card"><div class="number">PESSOAS</div><h3>Gestão de equipes</h3><p>O papel das pessoas na empresa e a importância de organizar responsabilidades e recursos humanos.</p></article>
+   <article class="card"><div class="number">ESTRATÉGIA</div><h3>Tomada de decisões</h3><p>Elementos básicos para transformar objetivos em ações e acompanhar a evolução do negócio.</p></article>
+   <article class="card"><div class="number">OPERAÇÃO</div><h3>Rotina empresarial</h3><p>Uma introdução à organização das atividades necessárias para fazer o negócio funcionar.</p></article>
+   <article class="card"><div class="number">NETWORKING</div><h3>Conexões</h3><p>Um espaço final para trocar experiências, fazer contatos e ampliar sua rede de empreendedores.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="programacao">
+ <div class="container">
+  <div class="section-kicker">Programação</div>
+  <h2>Uma tarde para aprender e conectar.</h2>
+  <div class="agenda">
+   <div class="agenda-item"><div class="time">10:00</div><div class="info"><h3>Recepção e retirada do kit</h3><p>Credenciamento dos participantes e entrega do kit do evento.</p></div></div>
+   <div class="agenda-item"><div class="time">10:30</div><div class="info"><h3>Início da palestra</h3><p>Introdução à administração de startups e gerenciamento de recursos.</p></div></div>
+   <div class="agenda-item"><div class="time">13:15</div><div class="info"><h3>Perguntas e respostas</h3><p>Momento aberto para dúvidas e interação com o palestrante.</p></div></div>
+   <div class="agenda-item"><div class="time">13:40</div><div class="info"><h3>Coffee break & networking</h3><p>Confraternização e oportunidade para conhecer outros participantes.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="cta" id="inscricao">
+ <div class="container">
+  <div class="section-kicker" style="color:#bae6fd">Vagas limitadas</div>
+  <h2>Reserve seu lugar gratuitamente.</h2>
+  <p>O espaço conta com aproximadamente 200 lugares. Para evitar superlotação, o registro deve ser realizado com antecedência pelo formulário de inscrição.</p>
+  <a class="btn" href="https://forms.google.com/" target="_blank" rel="noopener">Acessar formulário de inscrição ↗</a>
+  <p style="font-size:12px;margin-top:15px">* Link demonstrativo para o trabalho acadêmico.</p>
+ </div>
+</section>
+
+<footer>
+ <div class="container footer-row">
+  <span>Evento fictício desenvolvido para a <b>Habilitação em Comércio de Bens, Serviços e Turismo</b>.</span>
+  <span>SENAC · Ribeirão Preto</span>
+ </div>
+</footer>
+</body>
+</html>
